@@ -1,29 +1,90 @@
+import { faLaughWink } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react';
+import { useState } from 'react/cjs/react.development';
 import './App.css';
 import  ButtonCreate from './components/ButtonCreate';
 import Card from "./components/Card";
+import logo from "./logo.png";
+import { SortableContainer, SortableElement } from "react-sortable-hoc";
+import { arrayMoveImmutable} from 'array-move';
+
 
 function App() 
 {
-  const tasks = localStorage.getItem("tasks")==null? []: JSON.parse(localStorage.getItem("tasks")) ;
-  console.log( tasks );
+
+  const [ tasks, setTask ] = useState( JSON.parse(localStorage.getItem("tasks")) );
+  const createTask=(data)=>{
+    const tasks = JSON.parse(localStorage.getItem("tasks"))==null? []: JSON.parse(localStorage.getItem("tasks")) ;
+    tasks.push( data );
+    saveTask(tasks);
+  }
+
+  const saveTask=(tasks)=>
+  {
+    localStorage.setItem("tasks", JSON.stringify(tasks) );
+    setTask(JSON.parse(localStorage.getItem("tasks")));
+  }
+
+  const Delete = (index)=>
+  {
+    const task = JSON.parse( localStorage.getItem("tasks") );
+    task.splice( index, 1 );
+    saveTask(task);
+  }
+
+  //sortable
+
+  const onShortEnd =({oldIndex, newIndex})=>
+  {
+    if(oldIndex===newIndex)
+    { 
+      return;
+    }
+    const newTaskList = arrayMoveImmutable(tasks, oldIndex,newIndex);
+    saveTask(newTaskList);
+  }
+
+  const SortableItem = SortableElement( (props)=> 
+  {
+    return (<div className="column is-12-mobile is-4-tablet is-3-desktop">
+      <Card pending={ props.value } delete={()=>Delete(props.index)} />
+    </div>);
+  }
+  );
+  
+  const SortableList = SortableContainer((props)=>{
+    const {items} = props;
+    return (
+      <div className="tasks-container columns is-multiline">
+        {
+          items.map((task, index)=>(
+            <SortableItem value={task} index={index} key={index}/>
+          ))}
+      </div> 
+    );
+  });
+  
   
   return (
     <div className="container">
       <header className="mt-5 columns is-align-items-center">
-        <div className="column is-6">
-          <h1 className="title is-5">Lista de tareas Pendientes</h1>
+        <div className="column is-6 is-flex is-align-items-center">
+          <div className="mr-2">
+            <img src={logo} width="15" alt="logo" />
+          </div>
+          <h1 className="title is-5 has-text-centered-mobile">Lista de tareas Pendientes</h1>
         </div>
-        <div className="column is-6 is-flex is-justify-content-center">
-          <ButtonCreate/>
+        <div className="column is-6 is-flex is-justify-content-end">
+          <ButtonCreate create={createTask} />
         </div>
       </header>
-      <section className="tasks-container columns is-multiline">
-        {
-          tasks.map( (task, index)=>{
-            return  <div className="column is-12-mobile is-4-tablet is-3-desktop">
-                      <Card key={index} pending={ task } />
-                    </div>
-          })
+      <section className="mt-4">
+        { tasks.length>0?                  
+            <SortableList items={tasks} onSortEnd={onShortEnd} axis="xy" />                                                           
+            : <div className="column mt-4"> 
+                  <h4 className="subtitle is-4 has-text-centered"> <FontAwesomeIcon icon={faLaughWink} className="has-text-link" /> Que bien! parece que no tienes pendientes :3 </h4> 
+              </div>
         }
       </section>
     </div>

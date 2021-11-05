@@ -1,0 +1,10 @@
+.card .card-text-content
+{
+    height: 72px;
+    overflow: hidden;
+}
+
+.tasks-container
+{
+    user-select: none;
+}
