@@ -1,4 +1,4 @@
-import { faCheck, faSmileBeam, faSurprise } from "@fortawesome/free-solid-svg-icons";
+import { faSmileBeam, faSurprise } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Card(props)
@@ -16,14 +16,16 @@ export default function Card(props)
                     <p>{description}</p>
                 </div>
                 <div className="mt-3 is-flex is-justify-content-space-between is-align-items-center">
-                    <span className={"is-size-7 " +colors} title={message}>
-                        <FontAwesomeIcon icon={ message==="Importante"? faSmileBeam: faSurprise} /> {message}
-                    </span>
-                    <button title="¡Ya lo terminé!" className="button is-white is-small" onClick={()=>props.delete()} >
-                        <span className="icon is-small has-text-link">
-                            <FontAwesomeIcon icon={faCheck} />
+                    <div>
+                        <span className={"is-size-7 " +colors} title={message}>
+                            <FontAwesomeIcon icon={ message==="Importante"? faSmileBeam: faSurprise} /> {message}
                         </span>
-                    </button>
+                    </div>
+                    <div>
+                        <button title="¡Ya lo terminé!" className="button is-white is-small has-text-link" onClick={()=>props.delete()}>
+                        ¡Listo!
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

@@ -25,19 +25,19 @@ export default function ButtonCreate(props)
     return (
         <div>
             <button className="button is-link is-light" onClick={showModal}> 
-                <FontAwesomeIcon icon={faPlus} className="mr-1"/> Nuevo Pendiente
+                <FontAwesomeIcon icon={faPlus} className="mr-1"/> Nuevo pendiente
             </button>
             <div className="modal">
                 <div className="modal-background" onClick={closeModal}></div>
                 <div className="modal-content">
                     <div className="card">
                         <div className="card-content">
-                            <h2 className="title is-5 has-text-centered">Nuevo Pendiente</h2>
+                            <h2 className="title is-5 has-text-centered">¿Qué debo hacer? <span className="has-text-warning-dark"> <FontAwesomeIcon icon={faGrinBeamSweat} /> </span> </h2>
                             <form onSubmit={ handleSubmit(onSubmitButton) } >
                                 <div className="field">
                                     <label htmlFor="title" className="label">Título</label>
                                     <div className="control has-icons-left has-icons-right">
-                                        <input className="input" type="text" {...register("title",{ required:true, maxLength:20 })} placeholder="Título del pendiente" id="title" maxLength="20" autoComplete="false" />
+                                        <input className="input" autoComplete="off" type="text" {...register("title",{ required:true, maxLength:20 })} placeholder="Título del pendiente" id="title" maxLength="20"/>
                                         <span className="icon is-small is-left">
                                             <FontAwesomeIcon icon={faFlask} className="has-text-link" />
                                         </span>
@@ -59,7 +59,7 @@ export default function ButtonCreate(props)
                                 <div className="field">
                                     <label htmlFor="description" className="label">Descripción</label>
                                     <div className="control has-icons-left has-icons-right">
-                                        <input className="input" {...register("description",{required:true, maxLength:70})} type="text" placeholder="Descripción" id="description" maxLength="70" />
+                                        <input className="input" autoComplete="off" {...register("description",{required:true, maxLength:70})} type="text" placeholder="Descripción" id="description" maxLength="70" />
                                         <span className="icon is-small is-left">
                                             <FontAwesomeIcon icon={faEdit} className="has-text-link" />
                                         </span>

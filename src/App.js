@@ -45,22 +45,21 @@ function App()
     saveTask(newTaskList);
   }
 
-  const SortableItem = SortableElement( (props)=> 
+  const SortableItem = SortableElement( ({task,position})=> 
   {
     return (<div className="column is-12-mobile is-4-tablet is-3-desktop">
-      <Card pending={ props.value } delete={()=>Delete(props.index)} />
+      <Card pending={ task } delete={()=>Delete(position)} />
     </div>);
   }
   );
   
-  const SortableList = SortableContainer((props)=>{
-    const {items} = props;
+  const SortableList = SortableContainer(({items})=>{
     return (
       <div className="tasks-container columns is-multiline">
         {
-          items.map((task, index)=>(
-            <SortableItem value={task} index={index} key={index}/>
-          ))}
+          items.map((task, index)=>
+            <SortableItem task={task} index={index} position={index} key={index}/>
+          )}
       </div> 
     );
   });
@@ -83,7 +82,7 @@ function App()
         { tasks.length>0?                  
             <SortableList items={tasks} onSortEnd={onShortEnd} axis="xy" />                                                           
             : <div className="column mt-4"> 
-                  <h4 className="subtitle is-4 has-text-centered"> <FontAwesomeIcon icon={faLaughWink} className="has-text-link" /> Que bien! parece que no tienes pendientes :3 </h4> 
+                  <h4 className="subtitle is-4 has-text-centered"> <FontAwesomeIcon icon={faLaughWink} className="has-text-link" /> ¡Que bien! parece que no tienes pendientes :3 </h4> 
               </div>
         }
       </section>
