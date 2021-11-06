@@ -77,14 +77,14 @@ function App()
           <ButtonCreate create={createTask} />
         </div>
       </header>
-      <section className="mt-4">
+      <div className="mt-4">
         { tasks.length>0?                  
             <SortableList items={tasks} onSortEnd={onShortEnd} axis="xy" />                                                           
             : <div className="column mt-4"> 
                   <h4 className="subtitle is-4 has-text-centered"> <FontAwesomeIcon icon={faLaughWink} className="has-text-link" /> ¡Que bien! parece que no tienes pendientes :3 </h4> 
               </div>
         }
-      </section>
+      </div>
     </div>
   );
 }
