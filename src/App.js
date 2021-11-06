@@ -1,7 +1,6 @@
 import { faLaughWink } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
-import { useState } from 'react/cjs/react.development';
+import React, { useState } from 'react';
 import './App.css';
 import  ButtonCreate from './components/ButtonCreate';
 import Card from "./components/Card";
