@@ -12,7 +12,7 @@ import { arrayMoveImmutable} from 'array-move';
 function App() 
 {
 
-  const [ tasks, setTask ] = useState( JSON.parse(localStorage.getItem("tasks")) );
+  const [ tasks, setTask ] =  useState( JSON.parse(localStorage.getItem("tasks"))==null? []: JSON.parse(localStorage.getItem("tasks")) );
   const createTask=(data)=>{
     const tasks = JSON.parse(localStorage.getItem("tasks"))==null? []: JSON.parse(localStorage.getItem("tasks")) ;
     tasks.push( data );
