@@ -27,10 +27,9 @@ function App()
 
   const Delete = (index)=>
   {
-    console.log("click");
-    //const task = JSON.parse( localStorage.getItem("tasks") );
-    //task.splice( index, 1 );
-    //saveTask(task);
+    const task = JSON.parse( localStorage.getItem("tasks") );
+    task.splice( index, 1 );
+    saveTask(task);
   }
 
   //sortable
