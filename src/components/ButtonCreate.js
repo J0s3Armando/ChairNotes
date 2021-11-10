@@ -25,7 +25,7 @@ export default function ButtonCreate(props)
     return (
         <div>
             <button className="button is-link is-light" onClick={showModal}> 
-                <FontAwesomeIcon icon={faPlus} className="mr-1"/> Nuevo pendiente
+                <FontAwesomeIcon icon={faPlus} className="mr-1"/> <span className="is-hidden-mobile">Nuevo pendiente</span>
             </button>
             <div className="modal">
                 <div className="modal-background" onClick={closeModal}></div>

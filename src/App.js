@@ -27,9 +27,10 @@ function App()
 
   const Delete = (index)=>
   {
-    const task = JSON.parse( localStorage.getItem("tasks") );
-    task.splice( index, 1 );
-    saveTask(task);
+    console.log("click");
+    //const task = JSON.parse( localStorage.getItem("tasks") );
+    //task.splice( index, 1 );
+    //saveTask(task);
   }
 
   //sortable
@@ -66,18 +67,20 @@ function App()
   
   return (
     <div className="container">
-      <header className="mt-5 columns is-align-items-center">
-        <div className="column is-6 is-flex is-align-items-center">
+      <header className="m-5 is-flex is-justify-content-space-between is-align-items-center">
+        <div className="is-flex is-align-items-center">
           <div className="mr-2">
             <img src={logo} width="15" alt="logo" />
           </div>
-          <h1 className="title is-5 has-text-centered-mobile">Lista de tareas Pendientes</h1>
+          <h1 className="title is-5">
+            <span className="is-hidden-mobile">Mis Tareas </span>Pendientes
+          </h1>
         </div>
-        <div className="column is-6 is-flex is-justify-content-end">
+        <div className="is-flex is-justify-content-end">
           <ButtonCreate create={createTask} />
         </div>
       </header>
-      <div className="mt-4">
+      <div className="m-5">
         { tasks.length>0?                  
             <SortableList items={tasks} onSortEnd={onShortEnd} axis="xy" />                                                           
             : <div className="column mt-4"> 
