@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/chairnotes/static/css/main.99c63898.chunk.css",
+    "main.js": "/chairnotes/static/js/main.eaed912b.chunk.js",
+    "main.js.map": "/chairnotes/static/js/main.eaed912b.chunk.js.map",
+    "runtime-main.js": "/chairnotes/static/js/runtime-main.5169c3e9.js",
+    "runtime-main.js.map": "/chairnotes/static/js/runtime-main.5169c3e9.js.map",
+    "static/css/2.41953c31.chunk.css": "/chairnotes/static/css/2.41953c31.chunk.css",
+    "static/js/2.d1ea3794.chunk.js": "/chairnotes/static/js/2.d1ea3794.chunk.js",
+    "static/js/2.d1ea3794.chunk.js.map": "/chairnotes/static/js/2.d1ea3794.chunk.js.map",
+    "index.html": "/chairnotes/index.html",
+    "static/css/2.41953c31.chunk.css.map": "/chairnotes/static/css/2.41953c31.chunk.css.map",
+    "static/css/main.99c63898.chunk.css.map": "/chairnotes/static/css/main.99c63898.chunk.css.map",
+    "static/js/2.d1ea3794.chunk.js.LICENSE.txt": "/chairnotes/static/js/2.d1ea3794.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5169c3e9.js",
+    "static/css/2.41953c31.chunk.css",
+    "static/js/2.d1ea3794.chunk.js",
+    "static/css/main.99c63898.chunk.css",
+    "static/js/main.eaed912b.chunk.js"
+  ]
+}
